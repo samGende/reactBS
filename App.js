@@ -3,6 +3,7 @@ import {Image, StyleSheet, Text, View, TouchableOpacity, TextInput} from 'react-
 import PizzaTranslator from './Inputs'
 import  hspLogo from './assets/hsp.png'
 import { useState } from 'react';
+import {auth} from './fribase.js'
 
 export default function App() {
 
