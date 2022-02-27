@@ -2,14 +2,43 @@ import { StatusBar } from 'expo-status-bar';
 import {Image, StyleSheet, Text, View, TouchableOpacity, TextInput} from 'react-native';
 import PizzaTranslator from './Inputs'
 import  hspLogo from './assets/hsp.png'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {auth} from './fribase.js'
+import {createUserWithEmailAndPassword, signInWithEmailAndPassword} from 'firebase/auth'
 
 export default function App() {
 
   const[email, setEmail] = useState();
   const[password, setPassword] = useState();
 
+
+  const handleSignUp = () => {
+    createUserWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      // Signed in 
+      const user = userCredential.user;
+     console.log('Registered with ' + user.email)
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      alert(errorMessage);
+    });
+  }
+
+  const handleLogin = () => {
+    signInWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      // Signed in 
+      const user = userCredential.user;
+      console.log('signed in with ' + user.email);
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      alert(errorMessage);
+    });
+  }
 
   return (
     <View style={styles.container}>
@@ -30,14 +59,14 @@ export default function App() {
        ></TextInput>
 
       <TouchableOpacity 
-      onPress={() => alert(password)}
+      onPress={handleLogin}
       style={styles.button}
       >
         <Text style={styles.buttonText}>Login</Text>
       </TouchableOpacity>
 
       <TouchableOpacity 
-      onPress={() => alert(password)}
+      onPress={handleSignUp}
       style={styles.button}
       >
         <Text style={styles.buttonText}>Register</Text>
