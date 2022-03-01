@@ -1,9 +1,8 @@
 import { useNavigation } from '@react-navigation/core'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, Image } from 'react'
 import { KeyboardAvoidingView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import {auth} from '../fribase';
 import {createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged} from 'firebase/auth';
-
 
 const LoginScreen = () => {
   const [email, setEmail] = useState('')
@@ -17,7 +16,7 @@ const LoginScreen = () => {
       // User is signed in, see docs for a list of available properties
       // https://firebase.google.com/docs/reference/js/firebase.User
       const uid = user.uid;
-      navigation.navigate('Home');
+      navigation.replace('Home');
     } else {
       // User is signed out
       // ...
@@ -61,6 +60,8 @@ const LoginScreen = () => {
       behavior="padding"
     >
       <View style={styles.inputContainer}>
+
+        <Text style={styles.titleText}>FFW App</Text>
         <TextInput
           placeholder="Email"
           value={email}
@@ -68,7 +69,7 @@ const LoginScreen = () => {
           style={styles.input}
         />
         <TextInput
-          placeholder="Password"
+          placeholder="Passwort"
           value={password}
           onChangeText={text => setPassword(text)}
           style={styles.input}
@@ -81,13 +82,13 @@ const LoginScreen = () => {
           onPress={handleLogin}
           style={styles.button}
         >
-          <Text style={styles.buttonText}>Login</Text>
+          <Text style={styles.buttonText}>Anmelden</Text>
         </TouchableOpacity>
         <TouchableOpacity
           onPress={handleSignUp}
           style={[styles.button, styles.buttonOutline]}
         >
-          <Text style={styles.buttonOutlineText}>Register</Text>
+          <Text style={styles.buttonOutlineText}>Registrieren</Text>
         </TouchableOpacity>
       </View>
     </KeyboardAvoidingView>
@@ -102,6 +103,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  titleText: {
+      color:'#639a00',
+      textAlign: 'center',
+      fontSize: 30,
+      marginBottom:10
+
+  },
   inputContainer: {
     width: '80%'
   },
@@ -113,13 +121,13 @@ const styles = StyleSheet.create({
     marginTop: 5,
   },
   buttonContainer: {
-    width: '60%',
+    width: '80%',
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: 40,
   },
   button: {
-    backgroundColor: '#0782F9',
+    backgroundColor: '#639a00',
     width: '100%',
     padding: 15,
     borderRadius: 10,
@@ -128,7 +136,7 @@ const styles = StyleSheet.create({
   buttonOutline: {
     backgroundColor: 'white',
     marginTop: 5,
-    borderColor: '#0782F9',
+    borderColor: '#639a00',
     borderWidth: 2,
   },
   buttonText: {
@@ -137,7 +145,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   buttonOutlineText: {
-    color: '#0782F9',
+    color: '#639a00',
     fontWeight: '700',
     fontSize: 16,
   },
