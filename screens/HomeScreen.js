@@ -1,16 +1,18 @@
 import { useNavigation } from '@react-navigation/core'
 import React, { useState, useEffect } from 'react'
 import { StyleSheet, Text, TouchableOpacity, View, Image, Button } from 'react-native'
-import { getDocs, doc, collection } from 'firebase/firestore'
 import { auth } from '../fribase'
-import { db } from '../fribase'
+import {db} from '../fribase'
 import TimeDisplay from '../Components/timeDisplay'
+import { getDocs, doc, collection } from 'firebase/firestore'
 
 
 const HomeScreen = () => {
   const navigation = useNavigation()
   const [data, setData] = useState([]);
-
+// check into this 52k reads in 4 days not good 
+//may have been due to firebase console being open
+ 
   const workoutCollection = collection(db, 'Workouts')
 
   useEffect(() => {
@@ -28,12 +30,12 @@ const HomeScreen = () => {
             />
         )})
   const handleSignOut = () => {
-    auth
+   /* auth
       .signOut()
       .then(() => {
         navigation.replace("Login")
       })
-      .catch(error => alert(error.message))
+      .catch(error => alert(error.message))*/
   }
 
 
@@ -47,7 +49,7 @@ const HomeScreen = () => {
       <TimeDisplay hours="3" style={{ flex: 1 }} />
       <View style={styles.buttonContainer}>
 
-        <TouchableOpacity style={styles.buttons} onPress={navigation.replace("Checkin")}>
+        <TouchableOpacity style={styles.buttons} onPress={navigation.replace("CheckIn")}>
           <Text style={styles.buttonsText}>Check in</Text>
           <Image
           style={{width: 40, height:40}} 

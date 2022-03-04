@@ -1,16 +1,10 @@
-import { useNavigation } from '@react-navigation/core'
 import 'react-native-gesture-handler';
-import { StatusBar } from 'expo-status-bar';
-import {Image, StyleSheet, Text, View, TouchableOpacity, TextInput, Button} from 'react-native';
-import PizzaTranslator from './Inputs'
-import  hspLogo from './assets/hsp.png'
-import { useEffect, useState } from 'react';
+import { StyleSheet} from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import LoginScreen from './screens/LoginScreen';
 import HomeScreen from './screens/HomeScreen';
+import CheckInScreen from './screens/CheckInScreen'
 import { NavigationContainer } from '@react-navigation/native';
-import {doc, getDoc, collection, getDocs} from 'firebase/firestore'
-import {auth} from './fribase'
 
 const Stack = createNativeStackNavigator();
 
@@ -22,6 +16,8 @@ export default function App() {
       
       <Stack.Navigator>
         <Stack.Screen options={{ headerShown: false }} name="Login" component={LoginScreen} />
+
+        <Stack.Screen name="CheckIn" component={CheckInScreen} options={{headerBackVisible: true}}/>
         <Stack.Screen name="Home" component={HomeScreen} options={{headerBackVisible:false}} />
       </Stack.Navigator>
     </NavigationContainer>

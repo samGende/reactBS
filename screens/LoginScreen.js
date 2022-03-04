@@ -40,7 +40,8 @@ const LoginScreen = () => {
  }
 
   const handleLogin = () => {
-    //navigation.navigate('Home')
+   // navigation.navigate("Home")
+    
     signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       // Signed in 
@@ -52,6 +53,7 @@ const LoginScreen = () => {
       const errorMessage = error.message;
       alert(errorMessage);
     });
+    
  }
 
   return (
