@@ -3,6 +3,8 @@ import React, { useEffect, useState, Image } from 'react'
 import { KeyboardAvoidingView, StyleSheet, Text, TextInput, TouchableOpacity, View,} from 'react-native'
 import {auth} from '../fribase';
 import {createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged} from 'firebase/auth';
+import {doc, setDoc} from 'firebase/firestore'
+import {db} from '../fribase'
 
 const LoginScreen = () => {
   const [email, setEmail] = useState('')
@@ -24,18 +26,24 @@ const LoginScreen = () => {
   });
 })
 
-  const handleSignUp = () => {
+const addUserToDb = async( id)=> {
+  await setDoc(doc(db, 'Users', id))
+}
+
+  const handleSignUp  = () => {
       createUserWithEmailAndPassword(auth, email, password) 
        .then((userCredential) => {
         const user = userCredential.user;
         console.log('Registered with ' + user.email)
-        
+        console.log(user.uid)
+        addUserToDb(user.uid)
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
         alert(errorMessage);
       });
+      
 
  }
 

@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import LoginScreen from './screens/LoginScreen';
 import HomeScreen from './screens/HomeScreen';
+import CheckIn from './screens/CheckInScreen';
 import { NavigationContainer } from '@react-navigation/native';
 import {doc, getDoc, collection, getDocs} from 'firebase/firestore'
 import {auth} from './fribase'
@@ -23,6 +24,7 @@ export default function App() {
       <Stack.Navigator>
         <Stack.Screen options={{ headerShown: false }} name="Login" component={LoginScreen} />
         <Stack.Screen name="Home" component={HomeScreen} options={{headerBackVisible:false}} />
+        <Stack.Screen name="CheckIn" component={CheckIn} options={{headerBackVisible:false}}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
