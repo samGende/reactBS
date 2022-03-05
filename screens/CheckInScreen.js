@@ -21,6 +21,7 @@ const CheckIn = () => {
 
   return (
     <View style={{ height: "100%", width: "100%" }}>
+      <TimeDisplay style={{ flex: 1 }} />
       <TouchableOpacity style={{ flex: 1 }} onPress={handleTimeIn}>
         <Text>{text}</Text>
       </TouchableOpacity>

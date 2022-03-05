@@ -2,22 +2,32 @@ import React, { useEffect, useState } from "react";
 import { Text, View, StyleSheet } from "react-native";
 
 const TimeDisplay = (props) => {
-  const [date, setDate] = useState("");
+  const [date, setDate] = useState(new Date());
+  const [hours, sethours] = useState("");
+  const [minutes, setMinutes] = useState("");
 
-  const today = new Date();
   useEffect(() => {
     if (props.hours) {
-      console.log("hours");
+      sethours(props.hours);
+      setMinutes(props.minutes);
     } else {
-      console.log(today.getHours());
-      setDate(today);
+      sethours(date.getHours());
+      setMinutes(date.getMinutes());
+      const timerId = setInterval(refreshClock, 1000);
+      return function cleanup() {
+        clearInterval(timerId);
+      };
     }
   });
+
+  function refreshClock() {
+    setDate(new Date());
+  }
 
   return (
     <View style={styles.container}>
       <Text style={styles.hours}>
-        {props.hours}:{props.minutes}
+        {hours}:{minutes}
       </Text>
       <Text style={styles.label}>Aktives Zeit dieses Woche</Text>
     </View>

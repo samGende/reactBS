@@ -46,6 +46,7 @@ const HomeScreen = () => {
 
   return (
     <View style={styles.container}>
+      <TimeDisplay hours="3" minutes="45" style={{ flex: 1 }} />
       <View style={styles.buttonContainer}>
         <TouchableOpacity style={styles.buttons} onPress={handleCheckIn}>
           <Text style={styles.buttonsText}>Check in</Text>
