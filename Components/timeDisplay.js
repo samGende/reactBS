@@ -7,16 +7,16 @@ const TimeDisplay = (props) => {
   const [minutes, setMinutes] = useState("");
 
   useEffect(() => {
-    if (props.hours) {
-      sethours(props.hours);
-      setMinutes(props.minutes);
-    } else {
+    if (props.hours == 0) {
       sethours(date.getHours());
       setMinutes(date.getMinutes());
       const timerId = setInterval(refreshClock, 1000);
       return function cleanup() {
         clearInterval(timerId);
       };
+    } else {
+      sethours(props.hours);
+      setMinutes(props.minutes);
     }
   });
 
