@@ -29,7 +29,7 @@ const TimeDisplay = (props) => {
       <Text style={styles.hours}>
         {hours}:{minutes}
       </Text>
-      <Text style={styles.label}>Aktives Zeit dieses Woche</Text>
+      <Text style={styles.label}>{props.label}</Text>
     </View>
   );
 };
