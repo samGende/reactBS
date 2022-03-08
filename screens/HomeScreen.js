@@ -44,6 +44,10 @@ const HomeScreen = () => {
     navigation.replace("CheckIn");
   };
 
+  const handleCreateWorkout = () => {
+    navigation.replace("CreateWorkoutName");
+  };
+
   return (
     <View style={styles.container}>
       <TimeDisplay hours="3" minutes="45" style={{ flex: 1 }} />
@@ -55,7 +59,7 @@ const HomeScreen = () => {
             source={require("../assets/mycollection/png/001-in-time.png")}
           ></Image>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.buttons}>
+        <TouchableOpacity style={styles.buttons} onPress={handleCreateWorkout}>
           <Text style={styles.buttonsText}>Create Workout</Text>
           <Image
             style={{ width: 40, height: 40 }}

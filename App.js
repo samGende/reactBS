@@ -12,6 +12,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import LoginScreen from "./screens/LoginScreen";
 import HomeScreen from "./screens/HomeScreen";
 import CheckIn from "./screens/CheckInScreen";
+import CreateWorkoutName from "./screens/CreateWorkoutScreens/WorkoutNameScreen";
 import { NavigationContainer } from "@react-navigation/native";
 import store from "./store";
 import { Provider } from "react-redux";
@@ -37,6 +38,10 @@ export default function App() {
             component={CheckIn}
             options={{ headerBackVisible: false }}
           />
+          <Stack.Screen
+            name="CreateWorkoutName"
+            component={CreateWorkoutName}
+          ></Stack.Screen>
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>
