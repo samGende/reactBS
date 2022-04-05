@@ -1,6 +1,6 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createslice } from "@reduxjs/toolkit";
 
-const userSlice = createSlice({
+const userslice = createslice({
   name: "user",
   initialState: { value: { uid: "L" } },
 

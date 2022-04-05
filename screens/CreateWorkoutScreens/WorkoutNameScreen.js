@@ -1,3 +1,4 @@
+import { useNavigation } from "@react-navigation/core";
 import { useState } from "react";
 import {
   Text,
@@ -5,6 +6,7 @@ import {
   View,
   TouchableOpacity,
   StyleSheet,
+  Button,
 } from "react-native";
 import { doc, setDoc } from "firebase/firestore";
 import { db } from "../../fribase";
@@ -13,9 +15,19 @@ import { useSelector } from "react-redux";
 const CreateWorkoutName = () => {
   const [name, setName] = useState("");
   const user = useSelector((state) => state.user.value);
+  const navigator = useNavigation();
+
+  navigator.setOptions({
+    headerRight: () => <Button title="Home" onPress={back} />,
+  });
+
+  const back = () => {
+    navigator.navigate("Home");
+  };
 
   const addWorkoutToDB = () => {
     addToDB();
+    navigator.navigate("AddExercisesScreen");
     console.log(name);
   };
 

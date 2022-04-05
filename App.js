@@ -13,6 +13,7 @@ import LoginScreen from "./screens/LoginScreen";
 import HomeScreen from "./screens/HomeScreen";
 import CheckIn from "./screens/CheckInScreen";
 import CreateWorkoutName from "./screens/CreateWorkoutScreens/WorkoutNameScreen";
+import AddExercisesScreen from "./screens/CreateWorkoutScreens/AddExercisesScreen";
 import { NavigationContainer } from "@react-navigation/native";
 import store from "./store";
 import { Provider } from "react-redux";
@@ -41,6 +42,10 @@ export default function App() {
           <Stack.Screen
             name="CreateWorkoutName"
             component={CreateWorkoutName}
+          ></Stack.Screen>
+          <Stack.Screen
+            name="AddExercisesScreen"
+            component={AddExercisesScreen}
           ></Stack.Screen>
         </Stack.Navigator>
       </NavigationContainer>
