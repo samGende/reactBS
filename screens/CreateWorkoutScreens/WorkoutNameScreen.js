@@ -9,13 +9,15 @@ import {
 import { doc, setDoc } from "firebase/firestore";
 import { db } from "../../fribase";
 import { useSelector } from "react-redux";
+import { useNavigation } from "@react-navigation/core";
 
 const CreateWorkoutName = () => {
   const [name, setName] = useState("");
   const user = useSelector((state) => state.user.value);
+  const navigator = useNavigation();
 
   const addWorkoutToDB = () => {
-    addToDB();
+    navigator.navigate("AddExercisesScreen");
     console.log(name);
   };
 
